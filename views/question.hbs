@@ -1,0 +1,66 @@
+{{> menu}}
+
+<style>
+    .input-group {
+        width: 500px;
+    }
+
+    .category {
+        display: inline;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 15px;
+        padding-left: 15px;
+        border: 1px solid rgb(55, 194, 55);
+        background-color: rgb(202, 240, 202);
+        border-radius: 30px;
+    }
+
+    .com {
+        border: 2px solid;
+        width: 700px;
+    }
+</style>
+
+{{#if question}}
+<br>
+<br>
+<div class="card">
+    <div class="card-header">
+        Question
+    </div>
+    <div class="card-body">
+        <p class="card-text"><b>{{question.question}}</b></p>
+        {{#if category}}
+        <p class="category">{{category.category.name}}</p>
+        {{/if}}
+        <br>
+        <hr>
+        <form action="/addCom/{{question.id}}" method="post">
+            <label for="comment" style="margin-bottom: 10px;">Add Comment</label>
+
+            <div class="input-group mb-3">
+                <input type="text" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="text" class="form-control" placeholder="Comment">
+                <button class="btn btn-success" type="submit">Add Comment</button>
+            </div>
+        </form>
+    </div>
+    {{#if comments}}
+    {{#if commentsCount}}
+        <p>Comments count: {{commentsCount}}</p>
+    {{/if}}
+    {{#each comments}}
+    <div class="card com" style="margin: 10px;">
+        <div class="card-body">
+            <ul>
+                <li>User: {{email}}</li>
+                <li>Time: {{time}}</li>
+                <li>Text: {{text}}</li>
+            </ul>
+        </div>  
+    </div>
+    {{/each}}
+    {{/if}}
+</div>
+{{/if}}

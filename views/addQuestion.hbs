@@ -1,0 +1,42 @@
+{{>menu}}
+
+<style>
+    form {
+        margin: 0 auto;
+        width: 350px;
+        margin-top: 100px;
+        border: 3px solid rgb(148, 148, 230);
+        padding: 70px;
+        border-radius: 25px;
+    }
+</style>
+
+<form action="/addQuestion" method="post">
+    <h3>Add Question</h3>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="text" id="form1Example1" class="form-control" name="question" />
+        <label class="form-label" for="form1Example1">Your Question</label>
+        {{#if questionErr}}
+        <div class="alert alert-danger" role="alert">
+            <p>{{questionErr}}</p>
+        </div>
+        {{/if}}
+    </div>
+
+    <select class="form-select" name="category" aria-label="Default select example">
+        {{#if categories}}
+        <option selected>Category</option>
+        {{#each categories}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+        {{/if}}
+    </select>
+    <br>
+    {{#if categoryErr}}
+    <div class="alert alert-danger" role="alert">
+        <p>{{categoryErr}}</p>
+    </div>
+    {{/if}}
+    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Save</button>
+</form>

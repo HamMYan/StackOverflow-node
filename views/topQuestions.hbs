@@ -1,0 +1,22 @@
+{{>menu}}
+
+<style>
+    .card {
+        border: 2px solid;
+        width: 700px;
+    }
+</style>
+
+<h1>Top Questions</h1>
+
+{{#if questions}}
+    {{#each questions}}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{question}}</h4>
+                <a href="/answer/{{id}}" class="card-link">To Answer</a>
+            </div>
+        </div>
+        <br>
+    {{/each}}
+{{/if}}
