@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-const sequelize = new Sequelize('stack_overflow', 'root', '', {
+const sequelize = new Sequelize('railway', 'root', 'osMIkJOtbALHQbZpaIlbuhSHmrcyrMPE', {
     port: 3306,
     host: 'localhost',
     dialect: 'mysql'
